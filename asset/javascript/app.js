@@ -1,5 +1,5 @@
 'use strict';
-
+alert('test');
 /**
  * HangMan Game constructor
  * @constructor
