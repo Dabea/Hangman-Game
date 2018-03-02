@@ -1,5 +1,5 @@
 'use strict';
-alert('test');
+
 /**
  * HangMan Game constructor
  * @constructor
@@ -36,9 +36,15 @@ Hangman.prototype.buildBlankSpaces = function (word) {
     }
 };
 
-
+Hangman.prototype.enable = function() {
+    alert('test');
+    $('.keyboard').on('click', 'div.key', function(){
+        alert('a Key is pressed');
+    })
+};
 
 const game = new Hangman();
 
 game.pickRandomWord();
+game.enable();
 game.buildBlankSpaces('hello');

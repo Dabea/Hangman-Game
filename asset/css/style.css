@@ -1,0 +1,28 @@
+.key {
+    float:left;
+    background: #3e7ab2;
+    
+    padding: 15px;
+    margin: 6px;
+    border:1px solid white;
+    border-radius: 5px;
+    color: white;
+}
+
+.key:hover {
+    background: white;
+    border:1px solid #1563ac;
+    color: #3e7ab2;
+    
+}
+
+.keyboard {
+ background: #3e7ab2;
+ overflow:auto;
+}
+
+.row {
+    display: block;
+    clear: both;
+    margin:0 auto;
+}
