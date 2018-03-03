@@ -26,3 +26,19 @@
     clear: both;
     margin:0 auto;
 }
+
+.word-area {
+    width:400px;
+    height:200px;
+    background: green;
+}
+
+.letter-display {
+    width:20px;
+    height: 30px;
+    padding:10px;
+    font-size:3em;
+    margin: 5px;
+    border-bottom:2px solid black;
+    float: left;
+}
