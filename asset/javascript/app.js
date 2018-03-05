@@ -119,6 +119,7 @@ Hangman.prototype.enable = function() {
     let gussesEvent = this.guess.bind(this);
 
     $('.keyboard').on('click', 'div.key', function(){
+    
         gussesEvent(event);
     });
 
@@ -137,8 +138,8 @@ Hangman.prototype.guess = function(event) {
 
 
 Hangman.prototype.allIndexOf = function (string, toSearch) {
-    var indices = [];
-    for(var pos = string.indexOf(toSearch); pos !== -1; pos = string.indexOf(toSearch, pos + 1)) {
+    let indices = [];
+    for(let pos = string.indexOf(toSearch); pos !== -1; pos = string.indexOf(toSearch, pos + 1)) {
         indices.push(pos);
     }
     return indices;
