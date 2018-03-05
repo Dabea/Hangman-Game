@@ -11,6 +11,7 @@ function Hangman(){
     this.activeWordLetters = [];
     this.incorectGuess = null;
     this.incorectLetterBank = [];
+    this.lifeCount = null;
 
 
 }
@@ -25,6 +26,7 @@ function Hangman(){
 Hangman.prototype.init = function () {
     this.pickRandomWord();
     this.enable();
+    this.lifeCount = 8;
     this.buildBlankSpaces(this.activeWord);
     let $wordArea = $('.word-area');
     this._setActiveLetters(this.activeWord);
@@ -71,10 +73,11 @@ Hangman.prototype.incorrectLetterGuess = function (letter) {
     this.incorectGuess ++;
     $('.incorect-guess').html(this.incorectGuess);
     this.incorectLetterBank.push(letter);
+    console.log(this.incorectLetterBank);
     //Draw Hangman
 
-    if(incorectLetterBank.length > lifeCount){
-        //gameover
+    if(this.incorectLetterBank.length > this.lifeCount){
+        this.gameOver();
     }
    
 };
@@ -90,18 +93,22 @@ Hangman.prototype.corectLetterGuessed = function (letter) {
    const indexOfLetters = this.allIndexOf(this.activeWord, letter);
    for(let i = 0 ; i < indexOfLetters.length; i++ ){
     this.bankSpaces[indexOfLetters[i]] = letter;
-    console.log(this.bankSpaces);
    }
-
    this.drawWord();
-
 }
 
 Hangman.prototype.gameOver = function (){
     //ends the game
+
+    this.disable();
 }
 
-
+/**
+ * setter to set the value for activeWordLetter
+ * 
+ * @method _setActiveLetters
+ * @param {*} activeWord 
+ */
 Hangman.prototype._setActiveLetters = function(activeWord) {
     this.activeWordLetters = activeWord.split('');
 }
@@ -110,22 +117,31 @@ Hangman.prototype.drawWord = function ($element) {
     $element = $('.word-area');
     $element.html('');
     for(let indexCounter = 0; indexCounter < this.activeWord.length ; indexCounter++){
-        console.log('draw');
         $(`<div class='letter-display'>${this.bankSpaces[indexCounter]}</div>`).appendTo($element).hide().fadeIn(300 * indexCounter);
     }
 }
-
+/**
+ * Enable Click events
+ * 
+ * @for Hangman
+ * @method enable
+ */
 Hangman.prototype.enable = function() {
     let gussesEvent = this.guess.bind(this);
-
-    $('.keyboard').on('click', 'div.key', function(){
-    
-        gussesEvent(event);
-    });
-
-    $('.test').on('click' , {letter: 'o'}, this.guess);
+    $('.keyboard').on('click', 'div.key', function(){ gussesEvent(event); });
     $(document).on('keypress' ,  gussesEvent);
 };
+
+/**
+ * disable click events
+ * 
+ * @for Hangman
+ * @method disable
+ */
+Hangman.prototype.disable = function(){
+    $('.keyboard').off();
+    $(document).off();
+}
 
 Hangman.prototype.guess = function(event) {
     const letter = event.target.dataset.letter || event.key;
