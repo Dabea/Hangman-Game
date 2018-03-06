@@ -14,8 +14,6 @@ function Hangman(){
     this.lifeCount = null;
     this.wins = null;
     this.losses = null;
-
-
 }
 
 /**
