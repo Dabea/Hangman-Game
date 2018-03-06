@@ -10,13 +10,16 @@
 
 </head>
 <body>
-    <div>
-        HangMan Game!
-    </div>
-    <div class="word-area">
 
+    <div class="word-area">
+            <h1 class="text-center">
+                    HangMan Game!
+                </h1>
+        <div class="word"></div>
     </div>
-    <div>incorrect: <span class="incorect-guess"></span> </div>
+    <div>incorrect Gusses: <span class="incorect-guess"></span> </div>
+    <div>Wins: <span class="win-count"></span> </div>
+    <div>Losses: <span class="loss-count"></span> </div>
     <div class="keyboard" >
         <div class="row">
             <div class="key" data-letter="q" >q</div>
@@ -52,7 +55,16 @@
             <div class="key" data-letter="m" >m</div>
         </div>
     </div>
-   <button class="test"> guess</button>
+  <div class="hidden game-over">
+      <div class="panel">
+          <div class="game-outcome" >
+                
+          </div>
+       
+          <button class="btn play-again-js"> Play Again? </button>
+      </div>
+  </div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="./asset/javascript/app.js" >    </script>
 </body>
